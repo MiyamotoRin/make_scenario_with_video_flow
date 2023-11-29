@@ -1,7 +1,6 @@
 document.getElementById('submitSceneDescription').addEventListener('click', function(event) {
     event.preventDefault();
     var sceneDescription = document.getElementById('sceneDescriptionInput').value;
-    console.log(sceneDescription)
   
     // ここでAJAXリクエストを使用してPythonプログラムにデータを送信
     var xhr = new XMLHttpRequest();
@@ -10,10 +9,24 @@ document.getElementById('submitSceneDescription').addEventListener('click', func
   
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
-        // レスポンスとして動画のパスを受け取る
-        var response = JSON.parse(xhr.responseText);
-        console.log(response);
-        document.getElementById('sceneDescriptionResult').innerText = response.sceneDescription;
+            // レスポンスとして動画のパスを受け取る
+            var response = JSON.parse(xhr.responseText);
+            console.log(response);
+            var videoContainer = document.getElementById('sceneDescriptionResult');
+
+            // 既存の動画をクリアする
+            videoContainer.innerHTML = '';
+
+            // 新しいvideoタグを生成
+            var video = document.createElement('video');
+            video.src = response.sceneDescription;  // 動画のパスを設定
+            video.controls = true;
+            video.autoplay = false;
+            video.width = 640;  // 動画のサイズを設定
+            video.height = 480;
+
+            // videoタグをコンテナに追加
+            videoContainer.appendChild(video);
         }
     };
   
