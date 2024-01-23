@@ -1,0 +1,7 @@
+[submodule "make_scenario_with_video_flow/scene_detect"]
+	path = make_scenario_with_video_flow/scene_detect
+	url = https://github.com/MiyamotoRin/scene_detect.git
+	branch = llava_1.5
+[submodule "make_scenario_with_video_flow/LLaVA"]
+	path = make_scenario_with_video_flow/LLaVA
+	url = https://github.com/haotian-liu/LLaVA.git
